@@ -1,0 +1,66 @@
+// Abstract superclass
+abstract class Shape {
+    String name;
+
+    // Constructor
+    Shape(String name) {
+        this.name = name;
+    }
+
+    // Concrete method
+    void displayInfo() {
+        System.out.println("Shape: " + name);
+    }
+
+    // Abstract method (no body)
+    abstract double calculateArea();
+}
+
+// Subclass Circle
+class Circle extends Shape {
+    double radius;
+
+    Circle(double radius) {
+        super("Circle");
+        this.radius = radius;
+    }
+
+    @Override
+    double calculateArea() {
+        return Math.PI * radius * radius;
+    }
+}
+
+// Subclass Rectangle
+class Rectangle extends Shape {
+    double width, height;
+
+    Rectangle(double width, double height) {
+        super("Rectangle");
+        this.width = width;
+        this.height = height;
+    }
+
+    @Override
+    double calculateArea() {
+        return width * height;
+    }
+}
+
+// Main class
+public class AbstractClassDemo {
+    public static void main(String[] args) {
+        // Abstract class references pointing to concrete subclasses
+        Shape[] shapes = {
+            new Circle(5),
+            new Rectangle(4, 6)
+        };
+
+        // Polymorphic behavior
+        for (Shape s : shapes) {
+            s.displayInfo();
+            System.out.println("Area: " + s.calculateArea());
+            System.out.println();
+        }
+    }
+}

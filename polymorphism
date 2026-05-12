@@ -1,0 +1,61 @@
+// Define interface
+interface Drawable {
+    void draw(); // abstract method
+}
+
+// Implementing class Circle
+class Circle implements Drawable {
+    int radius;
+
+    Circle(int radius) {
+        this.radius = radius;
+    }
+
+    public void draw() {
+        System.out.println("Drawing a Circle with radius " + radius);
+    }
+}
+
+// Implementing class Rectangle
+class Rectangle implements Drawable {
+    int width, height;
+
+    Rectangle(int width, int height) {
+        this.width = width;
+        this.height = height;
+    }
+
+    public void draw() {
+        System.out.println("Drawing a Rectangle of " + width + "x" + height);
+    }
+}
+
+// Implementing class Square
+class Square implements Drawable {
+    int side;
+
+    Square(int side) {
+        this.side = side;
+    }
+
+    public void draw() {
+        System.out.println("Drawing a Square with side " + side);
+    }
+}
+
+// Main class
+public class InterfacePolymorphismDemo {
+    public static void main(String[] args) {
+        // Interface references to different implementations
+        Drawable[] shapes = {
+            new Circle(5),
+            new Rectangle(4, 6),
+            new Square(3)
+        };
+
+        // Polymorphic behavior: correct draw() runs dynamically
+        for (Drawable shape : shapes) {
+            shape.draw();
+        }
+    }
+}

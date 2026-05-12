@@ -1,0 +1,40 @@
+class OverloadDemo {
+
+    // Overloaded power methods
+    static int power(int base, int exp) {
+        int result = 1;
+        for (int i = 0; i < exp; i++) {
+            result *= base;
+        }
+        return result;
+    }
+
+    static double power(double base, double exp) {
+        return Math.pow(base, exp); // using Math for precision
+    }
+
+    // Overloaded absolute value methods
+    static int abs(int n) {
+        return (n < 0) ? -n : n;
+    }
+
+    static double abs(double n) {
+        return (n < 0) ? -n : n;
+    }
+
+    public static void main(String[] args) {
+        // Testing power methods
+        System.out.println("Custom int power(2,3): " + power(2, 3));
+        System.out.println("Math.pow(2,3): " + Math.pow(2, 3));
+
+        System.out.println("Custom double power(2.5,3): " + power(2.5, 3));
+        System.out.println("Math.pow(2.5,3): " + Math.pow(2.5, 3));
+
+        // Testing absolute value methods
+        System.out.println("Custom abs(-5): " + abs(-5));
+        System.out.println("Math.abs(-5): " + Math.abs(-5));
+
+        System.out.println("Custom abs(-3.7): " + abs(-3.7));
+        System.out.println("Math.abs(-3.7): " + Math.abs(-3.7));
+    }
+}

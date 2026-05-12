@@ -1,0 +1,93 @@
+import java.util.Scanner;
+
+class ArrayOperations {
+
+    // Display elements
+    static void display(int[] arr) {
+        System.out.print("Array elements: ");
+        for (int x : arr) {
+            System.out.print(x + " ");
+        }
+        System.out.println();
+    }
+
+    // Find maximum
+    static int findMax(int[] arr) {
+        int max = arr[0];
+        for (int x : arr) {
+            if (x > max) {
+                max = x;
+            }
+        }
+        return max;
+    }
+
+    // Find minimum
+    static int findMin(int[] arr) {
+        int min = arr[0];
+        for (int x : arr) {
+            if (x < min) {
+                min = x;
+            }
+        }
+        return min;
+    }
+
+    // Calculate sum
+    static int calculateSum(int[] arr) {
+        int sum = 0;
+        for (int x : arr) {
+            sum += x;
+        }
+        return sum;
+    }
+
+    // Calculate average
+    static double calculateAverage(int[] arr) {
+        return (double) calculateSum(arr) / arr.length;
+    }
+
+    // Linear search
+    static int linearSearch(int[] arr, int key) {
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == key) {
+                return i; // return index if found
+            }
+        }
+        return -1; // not found
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // User-defined array size
+        System.out.print("Enter size of array: ");
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+
+        // Input elements
+        System.out.println("Enter " + n + " elements:");
+        for (int i = 0; i < n; i++) {
+            arr[i] = sc.nextInt();
+        }
+
+        // Perform operations
+        display(arr);
+        System.out.println("Maximum value: " + findMax(arr));
+        System.out.println("Minimum value: " + findMin(arr));
+        System.out.println("Sum of elements: " + calculateSum(arr));
+        System.out.println("Average of elements: " + calculateAverage(arr));
+
+        // Search element
+        System.out.print("Enter element to search: ");
+        int key = sc.nextInt();
+        int pos = linearSearch(arr, key);
+        if (pos != -1) {
+            System.out.println("Element " + key + " found at index " + pos);
+        } else {
+            System.out.println("Element " + key + " not found in array.");
+        }
+
+        sc.close();
+    }
+}
